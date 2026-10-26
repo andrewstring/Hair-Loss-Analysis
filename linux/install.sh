@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Scalp Analyzer installer — AMD ROCm / CUDA / CPU auto-detection.
 set -euo pipefail
-cd "$(dirname "$0")"
+# This script lives in <project>/linux/ ; work from the project root one level up.
+cd "$(dirname "$0")/.."
 
 PYTHON="${PYTHON:-python3}"
 INSTALL_MODE="${INSTALL_MODE:-auto}"   # auto | rocm | cpu
@@ -137,7 +138,7 @@ echo "======================================================"
 echo " Installation complete."
 echo "======================================================"
 echo " Activate:      source .venv/bin/activate"
-echo " Run analysis:  python main.py /path/to/scalp.jpg"
+echo " Run analysis:  ./linux/run_analysis.sh /path/to/scalp.jpg   (or python main.py ...)"
 echo " Verify GPU:    python check_env.py"
 echo
 echo " GPU inference only activates once .onnx models exist"
